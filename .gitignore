@@ -1,0 +1,10 @@
+# dependencies
+node_modules/
+
+# editor
+.vscode/
+
+/main.js
+/main.js.map
+
+/data.json
