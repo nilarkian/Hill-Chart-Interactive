@@ -73,6 +73,10 @@
 /* =========================
    Unplaced items overlay
 ========================= */
+.hill-unplaced-overlay.is-collapsed .hill-unplaced-item {
+  display: none;
+}
+
 .hill-unplaced-overlay {
   position: absolute; 
   left: 8px;
