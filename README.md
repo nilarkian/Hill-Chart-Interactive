@@ -1,5 +1,7 @@
 
 # Obsidian Hill Charts (Bases View)
+<a href="https://www.buymeacoffee.com/nilarkian" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="20" width="85"></a>
+[![GitHub license](https://img.shields.io/github/license/stufro/obsidian-hill-charts)](https://github.com/nilarkian/Hill-Chart-Interactive/blob/main/LICENSE)
 
 An **interactive Hill Chart view for Obsidian Bases**.
 Visualize project progress directly from your Base using draggable dots that stay in sync with note frontmatter.
