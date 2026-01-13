@@ -14,6 +14,10 @@ export default class HillChartPlugin extends Plugin {
 
   async onload() {
     await this.loadSettings();
+this.registerHoverLinkSource("hill-chart", {
+  display: "Hill Chart",
+  defaultMod: false,
+});
 
     this.addSettingTab(new HillChartSettingTab(this.app, this));
     applyHillChartSettings(this.settings);

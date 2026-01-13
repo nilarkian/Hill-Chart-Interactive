@@ -67,65 +67,14 @@
 .hill-chart-bottom-line path {
   stroke-width: 1px;
 }
-/* =========================
-   Group + label background
-========================= */
-.hill-chart-group {
-  pointer-events: all;
-}
-
-.hill-label-bg {
-  fill: transparent;
-  pointer-events: none;
-  z-index: -1;
-}
-
-.hill-chart-group:hover .hill-label-bg {
-  fill: var(--background-secondary);
-}
-
-/* =========================
-   Label text
-========================= */
-
-.hill-chart-light .hill-chart-group > text {
-  fill: #000000;
-    font-weight: 600;
-}
-
-.hill-chart-dark .hill-chart-group > text {
-  fill: #c2c2c2;
-    font-weight: 500;
-}
 
 
-
-.hill-chart-group > text {
-  cursor: pointer;
-  white-space: normal;
-  overflow-wrap: anywhere;
-  word-break: break-word;
-  font-family: inherit;
-  text-anchor: start;
-    font-size: var(--hill-chart-group-font-size, 1rem);
-
-  shape-rendering: crispEdges;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-
-.hill-chart-group:hover > text {
-/*   fill: var(--text-normal); */
-  font-weight: 600;
-  text-decoration: underline;
-}
 
 /* =========================
    Unplaced items overlay
 ========================= */
 .hill-unplaced-overlay {
-  position: absolute;
+  position: absolute; 
   left: 8px;
   top: 8px;
   width: 200px;
@@ -230,8 +179,66 @@
 
 }
 
-
-/* collapsed state */
-.hill-unplaced-overlay.is-collapsed .hill-unplaced-item {
-  display: none;
+.hill-placed-hover-layer {
+  pointer-events: none;
 }
+ 
+/* .hill-placed-hit {
+  pointer-events: auto;
+}  */
+
+.hill-chart-group {
+  pointer-events: all;
+}
+.hill-placed-hover-anchor {
+  position: absolute;
+}
+.hill-placed-hover-proxy {
+  position: absolute;
+}
+
+.hill-chart-light .hill-chart-group > text {
+  fill: #000000;
+    font-weight: 600;
+}
+
+.hill-chart-dark .hill-chart-group > text {
+   fill: #c2c2c2;
+    font-weight: 500;
+}
+
+
+.hill-chart-group > text {
+  cursor: pointer;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  font-family: inherit;
+  text-anchor: start;
+    font-size: var(--hill-chart-group-font-size, 1rem);
+
+  shape-rendering: crispEdges;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.hill-chart-group {
+  fill: transparent;
+}
+.hill-chart-group:hover  {
+    fill: var(--background-secondary)
+}
+.hill-chart-group:hover > text {
+  font-weight: 600;
+  text-decoration: underline;
+
+}
+/* .hill-label-bg {
+  fill: transparent;
+  pointer-events: none;
+  z-index: -1;
+}
+.hill-chart-group:hover .hill-label-bg {
+  fill: var(--background-secondary);
+}
+ */
