@@ -1,9 +1,9 @@
 {
-	"id": "hill-Chart-interactive",
+	"id": "hill-chart-interactive",
 	"name": "Hill Chart Interactive",
 	"version": "1.0.0",
 	"minAppVersion": "1.9.0",
-	"description": "Add an interactive hill Chart view to your bases.",
+	"description": "Add an interactive hill chart view to your bases.",
 	"author": "nilarkian",
 	"authorUrl": "https://github.com/nilarkian",
 	"fundingUrl": "https://www.buymeacoffee.com/nilarkian",
