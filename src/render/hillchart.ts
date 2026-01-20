@@ -23,22 +23,26 @@ export function renderHillChart(
 
   // --- hover layer (used by placedHover) ---
 const placedHoverLayer = containerEl.createDiv("hill-placed-hover-layer");
-placedHoverLayer.style.position = "absolute";
-placedHoverLayer.style.inset = "0";
-placedHoverLayer.style.pointerEvents = "none";
-placedHoverLayer.style.zIndex = "10";
+placedHoverLayer.addClass("hc-pos-absolute");
+placedHoverLayer.addClass("hc-inset-0");
+placedHoverLayer.addClass("hc-pointer-none");
+placedHoverLayer.addClass("hc-z-hover");
+
 // ⬆️ END BLOCK
-  const data = placed.map(item => ({
+const data = placed
+  .filter(item => item.pos != null)
+  .map(item => ({
     id: item.path, // stable id
     description: item.label.slice(0, -3), // label text
-    x: item.pos!, // position
+    x: item.pos, // position
     size:
       Number(
         getComputedStyle(document.documentElement)
           .getPropertyValue("--hill-chart-point-size")
       ) || 8, // point size
-    color: getHillColor(item.pos!), // color by position
+    color: getHillColor(item.pos), // color by position
   }));
+
 
   const rect = hillPane.getBoundingClientRect(); // container size
 
@@ -71,7 +75,7 @@ placedHoverLayer.style.zIndex = "10";
     if (!p?.id) return; // guard
 
     const pos = Math.round(Math.min(100, Math.max(0, p.x))); // clamp
-    updateHillPos(app, p.id, p.description ?? "", pos); // persist
+    void updateHillPos(app, p.id, p.description ?? "", pos);
     new Notice(`⛰️ position of ${p.description} is ${pos}`); // feedback
    
     requestAnimationFrame(() => {

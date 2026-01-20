@@ -2,7 +2,6 @@
 import { BasesView, QueryController, HoverPopover} from "obsidian";
 import { createHillItem } from "./adapter";
 import { renderHill } from "./render";
-import type { BasesQueryResult } from "obsidian";
 
 export class HCV extends BasesView {
   readonly type = "hill-chart-view";
@@ -10,7 +9,8 @@ export class HCV extends BasesView {
   hoverPopover: HoverPopover | null = null;
 
   private containerEl: HTMLElement;
-  private lastData: BasesQueryResult | null = null;
+  private lastData: BasesView["data"] | null = null;
+
   private cleanupHill: (() => void) | null = null;
 
   constructor(controller: QueryController, parentEl: HTMLElement) {

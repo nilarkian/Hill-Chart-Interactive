@@ -28,12 +28,13 @@ declare module "hill-chart" {
     };
   };
 
-  export default class HillChart {
-    constructor(data: HillPoint[], config?: HillConfig);
-    render(): void;
-    on(
-      event: "move" | "moved" | "home" | "end" | "pointClick",
-      handler: (...args: any[]) => void
-    ): void;
-  }
+export default class HillChart {
+  constructor(data: HillPoint[], config?: HillConfig);
+  render(): void;
+  on(
+    event: "move" | "moved" | "home" | "end",
+    handler: (...args: unknown[]) => void
+  ): void;
+}
+
 }

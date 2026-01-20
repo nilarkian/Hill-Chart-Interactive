@@ -22,9 +22,9 @@ export function renderHill(
 
   // --- container hygiene ---
   containerEl.empty();
-  containerEl.style.position = "relative";
-  containerEl.style.width = "100%";
-  containerEl.style.height = "100%";
+  containerEl.addClass("hc-pos-relative");
+  containerEl.addClass("hc-size-full");
+
 
   const unplaced = items.filter(i => !i.pos || i.pos <= 0);
   const placed = items.filter(i => i.pos && i.pos > 0);
@@ -81,8 +81,7 @@ export function renderHill(
     const t = Math.min(1, Math.max(0, x / r.width));
     const newHillPos = Math.round(t * 100);
 
-    updateHillPos(app, path, path, newHillPos);
-
+void updateHillPos(app, path, path, newHillPos);
     // geometry changed → refresh hover
     refreshPlacedHover();
   };

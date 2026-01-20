@@ -1,6 +1,5 @@
 // export.ts
-import { Notice, App } from "obsidian";
-import moment from "moment";
+import { Notice, App, TFile } from "obsidian";
 
 let cachedSvgText: string | null = null;
 let cachedBg: string | null = null;
@@ -73,6 +72,7 @@ export async function exportHillToVault(app: App, svg: SVGSVGElement) {
   canvas.height = Math.round(height * dpr);
 
   const ctx = canvas.getContext("2d")!;
+  if (!ctx) return;
   ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
   ctx.fillStyle = cachedBg!;
@@ -82,21 +82,27 @@ export async function exportHillToVault(app: App, svg: SVGSVGElement) {
   URL.revokeObjectURL(url);
 
   const png = await new Promise<Blob>(res =>
-    canvas.toBlob(b => res(b!), "image/png")
+    canvas.toBlob(b => {
+  if (!b) return;
+  res(b);
+}, "image/png")
   );
 
-  const filename = `Hill ${moment().format("Do MMMM YYYY hh.mmA")}.png`;
+  const filename = `Hill ${window.moment().format("Do MMMM YYYY hh.mmA")}.png`;
+
+
   const path = `3. resource/pictures/${filename}`;
 
   const buffer = await png.arrayBuffer();
   const existing = app.vault.getAbstractFileByPath(path);
 
-  if (existing) {
-    await app.vault.modifyBinary(existing as any, buffer);
-  } else {
-    await app.vault.createBinary(path, buffer);
-  }
+if (existing instanceof TFile) {
+  await app.vault.modifyBinary(existing, buffer);
+} else {
+  await app.vault.createBinary(path, buffer);
+}
 
   await navigator.clipboard.writeText(`![[${filename}]]`);
-  new Notice("📸 Hill saved to vault and link copied");
+  new Notice("📸 Hill saved to vault and link copied.");
+
 }

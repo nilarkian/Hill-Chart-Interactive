@@ -58,7 +58,7 @@ export function renderUnplacedOverlay(
 
     const onDblClick = (e: MouseEvent) => {
       e.preventDefault();
-      app.workspace.openLinkText(item.path, "", true);
+      void app.workspace.openLinkText(item.path, "", true);
     };
 
     const onDragStart = (e: DragEvent) => {

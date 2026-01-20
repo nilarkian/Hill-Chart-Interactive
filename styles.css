@@ -246,3 +246,31 @@
   fill: var(--background-secondary);
 }
  */
+
+
+ .hc-pointer-none {
+  pointer-events: none;
+}
+.hc-z-hover {
+  z-index: 10;
+}
+.hc-pos-absolute {
+  position: absolute;
+}
+
+.hc-pos-relative {
+  position: relative;
+}
+
+.hc-inset-0 {
+  inset: 0;
+}
+
+.hc-size-full {
+  width: 100%;
+  height: 100%;
+}
+
+.hc-willchange-opacity {
+  will-change: opacity;
+}

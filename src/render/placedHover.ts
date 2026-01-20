@@ -55,13 +55,14 @@ export function renderPlacedHoverTargets(
     });
 
     const pad = 4;
-    hit.style.position = "absolute";
+    hit.addClass("hc-pos-absolute");
     hit.style.left   = `${rect.left - containerRect.left - pad}px`;
     hit.style.top    = `${rect.top  - containerRect.top  - pad}px`;
     hit.style.width  = `${rect.width  + pad * 2}px`;
     hit.style.height = `${rect.height + pad * 2}px`;
-    hit.style.pointerEvents = "none"; // drag-first
-    hit.style.willChange = "opacity";
+    hit.addClass("hc-pointer-none"); // drag-first
+    hit.addClass("hc-willchange-opacity");
+
 
     hits.push(hit);
 
@@ -84,7 +85,7 @@ export function renderPlacedHoverTargets(
 
     const onclick = (evt: MouseEvent) => {
       evt.preventDefault();
-      app.workspace.openLinkText(item.path, "", true);
+    void app.workspace.openLinkText(item.path, "", true);
     };
 
     hit.addEventListener("mouseenter", onMouseEnter);

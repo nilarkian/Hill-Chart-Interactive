@@ -7,13 +7,21 @@ export interface HillItem {
 }
 
 // hot path: optimized for Bases Value + number
-function extractNumber(raw: any): number | null {
+function extractNumber(raw: unknown): number | null {
   if (raw == null) return null;
 
-  // Bases Value
-  if (typeof raw === "object" && typeof raw.isEmpty === "function") {
-    if (raw.isEmpty()) return null;
-    const n = Number(raw.data);
+  // Bases value
+  if (
+    typeof raw === "object" &&
+    raw !== null &&
+    "isEmpty" in raw &&
+    typeof (raw as any).isEmpty === "function" &&
+    "data" in raw
+  ) {
+    const v = raw as { isEmpty(): boolean; data: unknown };
+    if (v.isEmpty()) return null;
+
+    const n = Number(v.data);
     return Number.isNaN(n) ? null : n;
   }
 
@@ -22,11 +30,19 @@ function extractNumber(raw: any): number | null {
   return Number.isNaN(n) ? null : n;
 }
 
-export function createHillItem(entry: any): HillItem | null {
-  const file = entry?.file;
-  if (!file?.path) return null; // fast fail
 
-  const n = extractNumber(entry.getValue("hillPos"));
+export function createHillItem(entry: unknown): HillItem | null {
+  if (typeof entry !== "object" || entry === null) return null;
+
+  const e = entry as {
+    file?: { path?: string; name?: string };
+    getValue?: (key: string) => unknown;
+  };
+
+  const file = e.file;
+  if (!file?.path || typeof e.getValue !== "function") return null;
+
+  const n = extractNumber(e.getValue("hillPos"));
 
   return {
     path: file.path,
@@ -34,3 +50,4 @@ export function createHillItem(entry: any): HillItem | null {
     pos: n ?? 0, // missing / invalid => unplaced
   };
 }
+
