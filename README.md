@@ -20,7 +20,7 @@ hillPos: 42
 ![demoa](assets/add%20hill%20view.gif)
 ---
 ![Demo1](assets/hill-base.gif)
-![Demo2](assets/hill-md.gif
+![Demo2](assets/hill-md.gif)
 
 ---
 
