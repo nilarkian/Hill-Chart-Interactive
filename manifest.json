@@ -1,10 +1,10 @@
 {
 	"id": "HCI",
 	"name": "Hill Chart Interactive",
-	"version": "1.0",
+	"version": "1.0.0",
 	"minAppVersion": "1.9.0",
-	"description": "Add Interactive hill Chart view to your bases",
-	"author": "indigo",
+	"description": "Add Interactive hill Chart view to your bases.",
+	"author": "nilarkian",
 	"authorUrl": "https://github.com/nilarkian",
 	"fundingUrl": "https://www.buymeacoffee.com/nilarkian",
 	"isDesktopOnly": false
