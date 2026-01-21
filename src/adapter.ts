@@ -12,12 +12,14 @@ function extractNumber(raw: unknown): number | null {
 
   // Bases value
   if (
-    typeof raw === "object" &&
-    raw !== null &&
-    "isEmpty" in raw &&
-    typeof (raw as any).isEmpty === "function" &&
-    "data" in raw
-  ) {
+  typeof raw === "object" &&
+  raw !== null &&
+  "isEmpty" in raw &&
+  typeof (raw as { isEmpty: unknown }).isEmpty === "function" &&
+  "data" in raw
+)
+
+  {
     const v = raw as { isEmpty(): boolean; data: unknown };
     if (v.isEmpty()) return null;
 

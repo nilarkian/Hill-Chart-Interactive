@@ -71,7 +71,7 @@ export async function exportHillToVault(app: App, svg: SVGSVGElement) {
   canvas.width = Math.round(width * dpr);
   canvas.height = Math.round(height * dpr);
 
-  const ctx = canvas.getContext("2d")!;
+  const ctx = canvas.getContext("2d");
   if (!ctx) return;
   ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
@@ -103,6 +103,7 @@ if (existing instanceof TFile) {
 }
 
   await navigator.clipboard.writeText(`![[${filename}]]`);
-  new Notice("📸 Hill saved to vault and link copied.");
+  new Notice("Hill saved and link copied.");
+
 
 }

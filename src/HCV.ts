@@ -9,7 +9,8 @@ export class HCV extends BasesView {
   hoverPopover: HoverPopover | null = null;
 
   private containerEl: HTMLElement;
-  private lastData: BasesView["data"] | null = null;
+  private lastData: this["data"] | null = null;
+
 
   private cleanupHill: (() => void) | null = null;
 
